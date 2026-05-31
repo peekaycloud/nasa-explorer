@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NASA Explorer
 
-## Getting Started
+Interactive space dashboard powered by NASA's free public APIs.
 
-First, run the development server:
+## Setup
+
+1. Get a free API key at [api.nasa.gov](https://api.nasa.gov/)
+2. Copy this file to `.env.local`:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Add your key:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+NASA_API_KEY=your_key_here
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> `DEMO_KEY` works for testing but is limited to 30 requests/hour and 50/day.
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy to Vercel
 
-## Deploy on Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/peekaycloud/nasa-explorer&env=NASA_API_KEY&envDescription=Free%20API%20key%20from%20api.nasa.gov&project-name=nasa-explorer)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Import this repo in [Vercel](https://vercel.com/new)
+2. Set **Root Directory** to `.` (default)
+3. Add environment variable: `NASA_API_KEY` = your key from [api.nasa.gov](https://api.nasa.gov/)
+4. Deploy — build command `npm run build`, output is auto-detected for Next.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Or use the Vercel CLI:
+
+```bash
+npm i -g vercel
+vercel link
+vercel env add NASA_API_KEY
+vercel deploy --prod
+```
+
+## Modules
+
+| Route | API | Description |
+|-------|-----|-------------|
+| `/` | APOD | Astronomy Picture of the Day |
+| `/mars` | Mars Rover Photos | Curiosity, Perseverance gallery |
+| `/earth` | EPIC | Full-Earth daily images |
+| `/asteroids` | NeoWs | Near-Earth asteroid tracker |
+| `/events` | EONET | Natural events world map |
+| `/weather` | DONKI | Space weather dashboard |
+| `/imagery` | Earth Imagery | Landsat by coordinates |
+| `/patents` | TechTransfer | NASA patent search |
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- Tailwind CSS + shadcn/ui
+- TanStack React Query
+- Recharts, Leaflet, tsparticles
