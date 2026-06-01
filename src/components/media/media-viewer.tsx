@@ -154,7 +154,7 @@ export function MediaViewer({
   if (!current) return null;
 
   const viewerBody = (
-    <div className="flex h-full flex-col">
+    <div className={cn("flex flex-col", isFullscreen && "h-full")}>
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 px-3 py-2">
         <div className="min-w-0 flex-1">
           {current.title && (
@@ -237,8 +237,8 @@ export function MediaViewer({
       <div
         ref={containerRef}
         className={cn(
-          "relative flex-1 overflow-hidden bg-black",
-          !isFullscreen && aspectRatio
+          "relative w-full overflow-hidden bg-black",
+          isFullscreen ? "min-h-0 flex-1" : aspectRatio
         )}
         onWheel={handleWheel}
         onPointerDown={handlePointerDown}
@@ -316,7 +316,7 @@ export function MediaViewer({
               onClick={() => goTo(i)}
               className={cn(
                 "relative h-16 w-24 shrink-0 overflow-hidden rounded-md border-2 transition-colors",
-                i === index ? "border-indigo-400" : "border-transparent opacity-70 hover:opacity-100"
+                i === index ? "border-[var(--matrix-green)]" : "border-transparent opacity-70 hover:opacity-100"
               )}
             >
               {item.type === "video" ? (
@@ -340,7 +340,7 @@ export function MediaViewer({
 
   if (isFullscreen) {
     return (
-      <div className="fixed inset-0 z-[100] flex flex-col bg-[#050816]/95 backdrop-blur-sm">
+      <div className="fixed inset-0 z-[100] flex flex-col bg-black/95 backdrop-blur-sm">
         <div className="flex items-center justify-end p-3">
           <Button
             size="icon"

@@ -147,7 +147,7 @@ export function AsteroidsPage() {
   return (
     <div>
       <PageHeader
-        icon="☄️"
+        icon="asteroid"
         title="Asteroid Tracker"
         description="Near-Earth objects passing close to Earth in the next 7 days — filter by date, hazard level, and explore with improved navigation."
         api="NeoWs"
@@ -172,7 +172,7 @@ export function AsteroidsPage() {
       ) : (
         <>
           <div className="mb-6 flex flex-wrap gap-3">
-            <Badge className="bg-indigo-500/20 text-indigo-200">
+            <Badge className="bg-[var(--matrix-green)]/10 text-[var(--matrix-green)]">
               {data?.element_count ?? 0} objects tracked
             </Badge>
             <Badge variant="outline">
@@ -185,7 +185,7 @@ export function AsteroidsPage() {
             <Badge variant="outline">{filtered.length} matching filters</Badge>
           </div>
 
-          <div className="sticky top-16 z-40 mb-6 space-y-4 rounded-xl border border-white/10 bg-[#050816]/90 p-4 backdrop-blur-xl">
+          <div className="sticky top-16 z-40 mb-6 space-y-4 rounded-xl border border-white/10 bg-black/90 p-4 backdrop-blur-xl">
             <Tabs
               value={activeDate}
               onValueChange={(value) => {
@@ -320,8 +320,8 @@ export function AsteroidsPage() {
                       key={asteroid.id}
                       id={`asteroid-${asteroid.id}`}
                       className={cn(
-                        "cursor-pointer border-white/10 bg-white/5 transition-all hover:border-indigo-400/40",
-                        isSelected && "border-indigo-400 ring-1 ring-indigo-400/50"
+                        "cursor-pointer border-white/10 bg-white/5 transition-all hover:border-[var(--matrix-green)]/40",
+                        isSelected && "border-[var(--matrix-green)] ring-1 ring-[var(--matrix-green)]/50"
                       )}
                       onClick={() => setSelectedId(asteroid.id)}
                     >
@@ -351,7 +351,7 @@ export function AsteroidsPage() {
                                 "h-full rounded-full",
                                 asteroid.is_potentially_hazardous_asteroid
                                   ? "bg-red-500"
-                                  : "bg-indigo-500"
+                                  : "bg-sky-500"
                               )}
                               style={{ width: `${distPercent}%` }}
                             />

@@ -24,7 +24,7 @@ export function PatentsPage() {
   return (
     <div>
       <PageHeader
-        icon="🧪"
+        icon="lab"
         title="NASA Patents"
         description="Search NASA's technology transfer database for patents and innovations available for licensing."
         api="TechTransfer"

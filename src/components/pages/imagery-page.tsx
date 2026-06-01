@@ -72,7 +72,7 @@ export function ImageryPage() {
   return (
     <div>
       <PageHeader
-        icon="🛰️"
+        icon="satellite"
         title="Earth Imagery Explorer"
         description="High-resolution satellite imagery from NASA GIBS. Adjust zoom level, pick a location, and explore with pan/zoom controls."
         api="Earth Imagery"

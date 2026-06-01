@@ -2,28 +2,27 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Rocket, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { MODULES } from "@/lib/nasa";
 import { Button } from "@/components/ui/button";
+import { SpaceIcon } from "@/components/ui/space-icon";
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050816]/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500/20 ring-1 ring-indigo-400/30">
-            <Rocket className="h-5 w-5 text-indigo-300" />
-          </div>
+          <SpaceIcon name="rocket" size={22} tone="accent" label="NASA Explorer" />
           <div>
             <p className="text-sm font-semibold tracking-wide text-white">
               NASA Explorer
             </p>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-indigo-300/70">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">
               Open Data Dashboard
             </p>
           </div>
@@ -35,13 +34,18 @@ export function Navbar() {
               key={module.href}
               href={module.href}
               className={cn(
-                "rounded-md px-3 py-2 text-sm transition-colors",
+                "flex items-center gap-1.5 rounded-md px-3 py-2 text-sm transition-colors",
                 pathname === module.href
-                  ? "bg-indigo-500/20 text-indigo-200"
-                  : "text-slate-400 hover:bg-white/5 hover:text-white"
+                  ? "bg-white/10 text-[var(--matrix-green)]"
+                  : "text-neutral-400 hover:bg-white/5 hover:text-white"
               )}
             >
-              {module.icon} {module.title.split(" ")[0]}
+              <SpaceIcon
+                name={module.icon}
+                size={16}
+                tone={pathname === module.href ? "accent" : "muted"}
+              />
+              {module.title.split(" ")[0]}
             </Link>
           ))}
         </nav>
@@ -49,7 +53,7 @@ export function Navbar() {
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden text-white"
+          className="text-white lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -58,7 +62,7 @@ export function Navbar() {
       </div>
 
       {open && (
-        <nav className="border-t border-white/10 bg-[#050816] px-4 py-3 lg:hidden">
+        <nav className="border-t border-white/10 bg-black px-4 py-3 lg:hidden">
           <div className="grid gap-1">
             {MODULES.map((module) => (
               <Link
@@ -66,13 +70,18 @@ export function Navbar() {
                 href={module.href}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "rounded-md px-3 py-2.5 text-sm",
+                  "flex items-center gap-2 rounded-md px-3 py-2.5 text-sm",
                   pathname === module.href
-                    ? "bg-indigo-500/20 text-indigo-200"
-                    : "text-slate-400 hover:bg-white/5 hover:text-white"
+                    ? "bg-white/10 text-[var(--matrix-green)]"
+                    : "text-neutral-400 hover:bg-white/5 hover:text-white"
                 )}
               >
-                {module.icon} {module.title}
+                <SpaceIcon
+                  name={module.icon}
+                  size={20}
+                  tone={pathname === module.href ? "accent" : "muted"}
+                />
+                {module.title}
               </Link>
             ))}
           </div>

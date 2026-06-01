@@ -38,7 +38,7 @@ export function EarthPage() {
   return (
     <div>
       <PageHeader
-        icon="🌍"
+        icon="earth"
         title="Earth from Space"
         description="Daily full-disk images of Earth captured by NASA's EPIC instrument aboard the DSCOVR satellite at the L1 Lagrange point."
         api="EPIC"

@@ -1,6 +1,6 @@
 # NASA Explorer
 
-Interactive space dashboard powered by NASA's free public APIs.
+Premium NASA information channel — live open-data feeds with high-contrast editorial layout.
 
 ## Setup
 

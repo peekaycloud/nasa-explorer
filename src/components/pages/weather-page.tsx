@@ -31,7 +31,7 @@ function EventTimeline({
   }
 
   return (
-    <div className="relative space-y-4 before:absolute before:left-4 before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-indigo-500/30">
+    <div className="relative space-y-4 before:absolute before:left-4 before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-[var(--matrix-green)]/30">
       {events.map((event, i) => {
         const id =
           event.flrID ?? event.cmeID ?? event.gstID ?? event.activityID ?? String(i);
@@ -39,7 +39,7 @@ function EventTimeline({
 
         return (
           <div key={id} className="relative pl-10">
-            <div className="absolute left-2.5 top-1.5 h-3 w-3 rounded-full bg-indigo-400 ring-4 ring-indigo-400/20" />
+            <div className="absolute left-2.5 top-1.5 h-3 w-3 rounded-full bg-[var(--matrix-green)] ring-4 ring-[var(--matrix-green)]/20" />
             <Card className="border-white/10 bg-white/5">
               <CardHeader className="pb-2">
                 <div className="flex flex-wrap items-center gap-2">
@@ -102,7 +102,7 @@ export function WeatherPage() {
   return (
     <div>
       <PageHeader
-        icon="🌤️"
+        icon="weather"
         title="Space Weather"
         description="Solar flares, coronal mass ejections, and geomagnetic storms from NASA's DONKI space weather database."
         api="DONKI"
@@ -110,13 +110,13 @@ export function WeatherPage() {
 
       <div className="mb-6 flex flex-wrap gap-2">
         <Badge variant="outline">{startDate} → {endDate}</Badge>
-        <Badge className="bg-indigo-500/20 text-indigo-200">
+        <Badge className="bg-[var(--matrix-green)]/10 text-[var(--matrix-green)]">
           {flares.data?.length ?? 0} flares
         </Badge>
         <Badge className="bg-amber-500/20 text-amber-200">
           {cme.data?.length ?? 0} CMEs
         </Badge>
-        <Badge className="bg-violet-500/20 text-violet-200">
+        <Badge className="bg-amber-500/15 text-amber-300">
           {gst.data?.length ?? 0} geomagnetic storms
         </Badge>
       </div>

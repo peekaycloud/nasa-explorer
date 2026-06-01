@@ -55,13 +55,13 @@ export function MarsPage() {
   return (
     <div>
       <PageHeader
-        icon="🔴"
+        icon="mars"
         title="Mars Rover Gallery"
         description="Browse photos captured by NASA's Mars rovers. Select a rover, date, and camera to explore the Red Planet."
         api="Mars Rover Photos"
       />
 
-      <div className="mb-8 grid gap-4 rounded-xl glass p-4 sm:grid-cols-3">
+      <div className="mb-6 grid gap-4 rounded-xl glass p-4 sm:grid-cols-3">
         <div className="space-y-2">
           <Label>Rover</Label>
           <Select
@@ -119,7 +119,10 @@ export function MarsPage() {
       </div>
 
       {isLoading ? (
-        <Skeleton className="aspect-video w-full rounded-xl" />
+        <div className="space-y-3">
+          <Skeleton className="aspect-video w-full rounded-xl" />
+          <p className="text-center text-sm text-slate-500">Loading rover photos…</p>
+        </div>
       ) : error ? (
         <ErrorState
           message={
@@ -134,7 +137,9 @@ export function MarsPage() {
       ) : (
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="outline">{mediaItems.length} photos</Badge>
+            <Badge className="bg-[var(--matrix-green)]/10 text-[var(--matrix-green)]">
+              {mediaItems.length} photos loaded
+            </Badge>
             <Badge variant="outline">{format(new Date(earthDate), "yyyy")}</Badge>
             <Badge variant="outline" className="capitalize">
               {rover}

@@ -37,7 +37,7 @@ export function EventsPage() {
   return (
     <div>
       <PageHeader
-        icon="🌪️"
+        icon="events"
         title="Natural Events"
         description="Active wildfires, storms, volcanoes, and other natural events tracked globally via NASA's EONET."
         api="EONET"

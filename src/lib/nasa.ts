@@ -1,3 +1,5 @@
+import type { SpaceIconName } from "@/components/ui/space-icon";
+
 export type ApodResponse = {
   date: string;
   title: string;
@@ -286,61 +288,76 @@ export async function searchPatents(query: string): Promise<PatentsResponse> {
   };
 }
 
-export const MODULES = [
+export const MODULES: Array<{
+  href: string;
+  title: string;
+  short: string;
+  description: string;
+  icon: SpaceIconName;
+  api: string;
+}> = [
   {
     href: "/",
     title: "Daily Space Photo",
+    short: "APOD",
     description: "Astronomy Picture of the Day with full explanation",
-    icon: "🌌",
+    icon: "apod",
     api: "APOD",
   },
   {
     href: "/mars",
     title: "Mars Gallery",
+    short: "Mars",
     description: "Rover photos from Curiosity, Perseverance & more",
-    icon: "🔴",
+    icon: "mars",
     api: "Mars Rover",
   },
   {
     href: "/earth",
     title: "Earth from Space",
+    short: "Earth",
     description: "Daily full-Earth photos from the DSCOVR satellite",
-    icon: "🌍",
+    icon: "earth",
     api: "EPIC",
   },
   {
     href: "/asteroids",
     title: "Asteroid Tracker",
+    short: "NEOs",
     description: "Near-Earth asteroids, size, distance & hazard status",
-    icon: "☄️",
+    icon: "asteroid",
     api: "NeoWs",
   },
   {
     href: "/events",
     title: "Natural Events",
+    short: "Events",
     description: "Wildfires, storms & volcanoes tracked worldwide",
-    icon: "🌪️",
+    icon: "events",
     api: "EONET",
   },
   {
     href: "/weather",
     title: "Space Weather",
+    short: "Weather",
     description: "Solar flares, CMEs & geomagnetic storms",
-    icon: "🌤️",
+    icon: "weather",
     api: "DONKI",
   },
   {
     href: "/imagery",
     title: "Earth Imagery",
+    short: "Imagery",
     description: "Landsat satellite imagery by coordinates & date",
-    icon: "🛰️",
+    icon: "satellite",
     api: "Landsat",
   },
   {
     href: "/patents",
     title: "NASA Patents",
+    short: "Patents",
     description: "Searchable NASA technology transfer database",
-    icon: "🧪",
+    icon: "lab",
     api: "TechTransfer",
   },
-] as const;
+];
